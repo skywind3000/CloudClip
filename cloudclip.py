@@ -287,10 +287,12 @@ class CloudClip (object):
 		if (not gistid) or (gistid == '-'):
 			files = {}
 			text = 'CloudClip:\n'
+			text += 'Your own clipboard in the cloud, '
+			text += 'copy and paste text with gist between systems.\n'
+			text += 'home: https://github.com/skywind3000/CloudClip\n\n'
 			text += 'Place-holder, don\'t remove it !!'
 			files['<clipboard>'] = {'content': text}
-			public = self.config.get('public', True)
-			r = self.api.create('<Clipboard of CloudClip>', files, public)
+			r = self.api.create('<Clipboard of CloudClip>', files)
 			gistid = r['id']
 			self.set_id(gistid)
 			print 'create a new gist with id: ' + gistid
@@ -421,7 +423,7 @@ def main(args = None):
 		# print head, '{-l --list}'
 		# print head, '{-e --clean}'
 		print ''
-		print '-i token [id]  Initialize token and id, create a new gist if id vacants'
+		print '-i token [id]  Initialize token and id, create a new gist if id is empty'
 		print '-c [name]      Takes the standard input and places it in the cloud'
 		print '-p [name]      Read content from cloud and output to standard output'
 		print '-l             List information of the gist'
