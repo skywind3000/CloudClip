@@ -37,7 +37,7 @@ For Windows:
 
 Manully setup the PATH in your control panel. 
 
-## Document
+## Documentation
 
 usage: python cloudclip.py <operation> [...]
 operations:
