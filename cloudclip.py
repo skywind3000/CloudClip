@@ -399,6 +399,8 @@ class CloudClip (object):
 	def paste (self, name):
 		content = self.read_file(name)
 		if content is None:
+			if not name:
+				name = '<unnamed>'
 			self.error(4, 'File not find: ' + name)
 		sys.stdout.write(content)
 		sys.stdout.flush()
