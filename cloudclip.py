@@ -239,8 +239,8 @@ class CloudClip (object):
 			ininame = os.path.expanduser(ininame)
 		self.ininame = os.path.normcase(ininame)
 		self.read_ini(self.ininame)
-		self.set_token(self.config['token'])
-		self.set_id(self.config['id'])
+		self.set_token(self.config.get('token', None))
+		self.set_id(self.config.get('id', None))
 
 	def set_token (self, token):
 		if token:
@@ -443,10 +443,11 @@ def main(args = None):
 	cp = CloudClip('~/.config/cloudclip.conf')
 
 	if (not os.path.exists(cp.ininame)) or (not cp.config['token']):
-		text = 'uses "%s -i" to initialize your token\n'%program
-		text += 'get a new token from: https://github.com/settings/tokens'
-		cp.error(4, text)
-		return 4
+		if not cmd in ('-i', '--init'):
+			text = 'uses "%s -i" to initialize your token\n'%program
+			text += 'get a new token from: https://github.com/settings/tokens'
+			cp.error(4, text)
+			return 4
 	elif not cp.config['id']:
 		text = 'uses "%s -i" to indicate or create a gist id'%program
 		cp.error(5, text)
