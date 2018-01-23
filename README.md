@@ -4,17 +4,19 @@ Your own clipboard in the cloud, copy and paste text with gist. Inspired by pbco
 
 ## Tutorial
 
-Copy on a local system to the cloud:
+Copy text on a local system to the cloud:
 
     echo "Hello, Cloud Clipboard" | cloudcopy
 
-Paste data on a remote system from the cloud:
+Paste on a remote system from the cloud:
 
     cloudpaste
 
-And you will see the text from standard output:
+And you will see the text coppied from another system:
 
     Hello, Cloud Clipboard
+
+Same access token and gist id must be setup before copy/paste, see below
 
 
 ## Installation
