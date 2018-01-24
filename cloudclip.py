@@ -338,7 +338,7 @@ class CloudClip (object):
 			size = str(item['size'])
 			size1 = max(size1, len(name))
 			size2 = max(size2, len(size))
-			if name[:1] == '<' and name[-1:] == '>':
+			if name == '<clipboard>':
 				continue
 			count += 1
 		if count == 0:
@@ -349,7 +349,7 @@ class CloudClip (object):
 		print '----'.ljust(size1), '\t', '----'.rjust(size2)
 		for name in names:
 			item = gist.files[name]
-			if name[:1] == '<' and name[-1:] == '>':
+			if name == '<clipboard>':
 				continue
 			print name.ljust(size1), '\t' + str(item['size']).rjust(size2)
 		print ''
@@ -425,11 +425,11 @@ def main(args = None):
 		# print head, '{-l --list}'
 		# print head, '{-e --clean}'
 		print ''
-		print '-i token [id]  Initialize token and id, create a new gist if id is empty'
-		print '-c [name]      Takes the standard input and places it in the cloud'
-		print '-p [name]      Read content from cloud and output to standard output'
-		print '-l             List information of the gist'
-		print '-e             Clean the clipboard'
+		print '-i <token> [id]  Initialize token and id, create a new gist if id is empty'
+		print '-c [name]    Takes the standard input and places it in the cloud'
+		print '-p [name]    Read content from cloud and output to standard output'
+		print '-l           List information of the gist'
+		print '-e           Clean the clipboard'
 		print ''
 		print 'A github access token is needed before everything, you can generate a new'
 		print 'one from: https://github.com/settings/tokens'
