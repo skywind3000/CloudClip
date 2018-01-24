@@ -43,7 +43,7 @@ usage: python cloudclip.py <operation> [...]
 operations:
 
 ```
--i token [id]  Initialize token and id, create a new gist if id is empty
+-i <token> [id]  Initialize token and id, create a new gist if id is empty
 -c [name]      Takes the standard input and places it in the cloud
 -p [name]      Read content from cloud and output to standard output
 -l             List information of the gist
