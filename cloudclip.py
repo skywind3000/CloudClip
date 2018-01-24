@@ -284,6 +284,7 @@ class CloudClip (object):
 	def login (self, token, gistid):
 		self.set_token(token)
 		self.set_id(gistid)
+		create_gist = False
 		if (not gistid) or (gistid == '-'):
 			files = {}
 			text = 'CloudClip:\n'
@@ -295,13 +296,19 @@ class CloudClip (object):
 			r = self.api.create('<Clipboard of CloudClip>', files)
 			gistid = r['id']
 			self.set_id(gistid)
-			print 'create a new gist with id: ' + gistid
+			print 'New gist created with id: ' + gistid
+			create_gist = True
 		gist = self.api.gist_get(self.gistid)
 		with open(self.ininame, 'w') as fp:
 			fp.write('[default]\n')
 			fp.write('token=%s\n'%self.get_token())
 			fp.write('id=%s\n'%self.get_id())
-		print 'config updated: %s'%self.ininame
+		print 'Configuration updated in: %s'%self.ininame
+		if create_gist:
+			print ''
+			print 'Use the command below in other systems to initialize'
+			print 'cloudclip.py -i %s %s'%(token, gistid)
+		print ''
 		return True
 
 	def error (self, code, message):
