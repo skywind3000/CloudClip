@@ -318,7 +318,7 @@ class CloudClip (object):
 
 	def check (self):
 		nm = sys.argv[0]
-		if not os.path.exists(self.ininame):
+		if not os.path.exists(self.ininame) and False:
 			text = "Authorization token and gist-id are required, see %s -h"%nm
 			self.error(1, text)
 		if not self.config['token']:
