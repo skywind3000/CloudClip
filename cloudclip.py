@@ -453,7 +453,15 @@ def main(args = None):
 
 	cp = CloudClip('~/.config/cloudclip.conf')
 
-	if (not os.path.exists(cp.ininame)) or (not cp.config['token']):
+	# check token/id from system environ
+	env_token = os.environ.get('CLOUDCLIP_TOKEN', '')
+	env_gistid = os.environ.get('CLOUDCLIP_ID', '')
+
+	if env_token and env_gistid:
+		cp.set_token(token)
+		cp.set_id(gistid)
+
+	if (not os.path.exists(cp.ininame)) and (not cp.config['token']):
 		if not cmd in ('-i', '--init'):
 			text = 'uses "%s -i" to initialize your token\n'%program
 			text += 'get a new token from: https://github.com/settings/tokens'
