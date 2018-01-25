@@ -457,8 +457,9 @@ def main(args = None):
 	env_token = os.environ.get('CLOUDCLIP_TOKEN', '')
 	env_gistid = os.environ.get('CLOUDCLIP_ID', '')
 
-	if env_token and env_gistid:
+	if env_token:
 		cp.set_token(env_token)
+	if env_gistid:
 		cp.set_id(env_gistid)
 
 	if (not os.path.exists(cp.ininame)) and (not cp.config['token']):
