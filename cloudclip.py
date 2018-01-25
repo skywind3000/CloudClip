@@ -458,8 +458,8 @@ def main(args = None):
 	env_gistid = os.environ.get('CLOUDCLIP_ID', '')
 
 	if env_token and env_gistid:
-		cp.set_token(token)
-		cp.set_id(gistid)
+		cp.set_token(env_token)
+		cp.set_id(env_gistid)
 
 	if (not os.path.exists(cp.ininame)) and (not cp.config['token']):
 		if not cmd in ('-i', '--init'):
