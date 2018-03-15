@@ -42,7 +42,7 @@ Manully setup the PATH in your control panel.
 usage: python cloudclip.py <operation> [...]
 operations:
 
-```
+```bash
 -i <token> [id]  Initialize token and id, create a new gist if id is empty
 -c [name]      Takes the standard input and places it in the cloud
 -p [name]      Read content from cloud and output to standard output
@@ -53,6 +53,15 @@ operations:
 A github access token is needed before everything, you can generate a new one from: https://github.com/settings/tokens
 
 Create a new gist with "-i token" on your own PC, remember the gist id. then use "-i token id" on a remote one which you may exchange data with.
+
+## Aliases
+
+For convenience, two aliases can be created:
+
+```bash
+alias cloudcopy='python /path/to/cloudclip.py -c'
+alias cloudpaste='python /path/to/cloudclip.py -p'
+```
 
 ## Requirement
 
